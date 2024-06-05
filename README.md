@@ -9,8 +9,11 @@ La **TodoList**
 
 ## Etape I Le crud
 
-Créer la TodoList, ajouter, supprimer, modifier et voir l'élément <br>
-Ajouter une catégorie
+- Créer la TodoList, ajouter, supprimer, modifier et voir l'élément <br>
+- Ajouter une catégorie
+- APIRest
+- Token JWT
+- Ajout du Framework React js pour voir son fonctionnement
 
 ## Etape II Authentification
 
