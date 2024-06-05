@@ -16,6 +16,17 @@ class TodolistRepository extends ServiceEntityRepository
         parent::__construct($registry, Todolist::class);
     }
 
+    public function findByUserId(int $userId): array
+    {
+        return $this->createQueryBuilder('l')
+            ->innerJoin('l.users', 'u')
+            ->andWhere('u.id = :userId')
+            ->setParameter('userId', $userId)
+            ->getQuery()
+            ->getResult();
+    }
+
+
     //    /**
     //     * @return Todolist[] Returns an array of Todolist objects
     //     */
