@@ -9,9 +9,12 @@ La **TodoList**
 
 ## Etape I L'API
 
-- <span style="color:orange">Créer la base de données en API Rest
+- <span style="color:green">&#10003;<del>Créer la base de données en API Rest
 - <span style="color:green">&#10003;<del> Créer les entités
-- <span style="color:green">Fixtures
+- <span style="color:green">&#10003;<del>Fixtures
+- <span style="color:orange">CRUD liste
+- CRUD tâche
+- CRUD catégorie
 - Ajout du Token JWT
 
 ## Etape II Authentification

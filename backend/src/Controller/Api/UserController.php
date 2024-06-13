@@ -13,6 +13,9 @@ use Symfony\Component\Routing\Attribute\Route;
 #[Route('/api/user', name:'api_user_')]
 class UserController extends AbstractController
 {
+    /**
+     * Road for get user with his lists and tasks
+     */
     #[Route('/{id}', name: 'user')]
     public function userLists($id, UserRepository $userRepository): JsonResponse
     {
