@@ -24,6 +24,9 @@ class ListController extends AbstractController
         return $this->json($list, Response::HTTP_OK, [], ["groups" => "list"]);
     }
 
+    /**
+     * Road for create new list
+     */
     #[Route('/create', name:'create', methods:['POST'])]
     public function create(ManagerRegistry $managerRegistry,
                             Request $request,
@@ -46,5 +49,51 @@ class ListController extends AbstractController
         $entityManager->persist($todolist);
         $entityManager->flush();
         return new Response("Liste créé avec succès !", 201);
+    }
+
+    /**
+     * Road for update list
+     */
+    #[Route('/{id}/update', name:"update", methods:["PUT"])]
+    public function update($id, 
+                            ManagerRegistry $managerRegistry,
+                            Request $request,
+                            TodolistRepository $todolistRepository)
+    {
+        $entityManager = $managerRegistry->getManager();
+        $data = json_decode($request->getContent(), true);
+
+        $todolist = $todolistRepository->find($id);
+        // Check if list exist
+        if(!isset($todolist)){
+            return new Response("Cette liste n'existe pas !", 400);
+        }
+
+        // Check if data is not null
+        if(isset($data["name"])) {
+            $todolist->setName($data["name"]);
+        }
+
+        $entityManager->persist($todolist);
+        $entityManager->flush();
+        return new Response("Nom de la liste modifier avec succès !", 201);
+    }
+
+    /**
+     * Road for delete list
+     */
+    #[Route('/{id}/delete', name:"delete", methods:["DELETE"])]
+    public function delete($id, ManagerRegistry $managerRegistry, TodolistRepository $todolistRepository)
+    {
+        $todolist = $todolistRepository->find($id);
+        if(!isset($todolist)) {
+            return new Response("Cette liste n'existe pas", 400);
+        }
+        // $todolistRepository->remove($todolist, true);
+        $entityManager = $managerRegistry->getManager();
+        $entityManager->remove($todolist);
+        $entityManager->flush();
+
+        return new Response("Liste supprimer avec succès", 201);
     }
 }
