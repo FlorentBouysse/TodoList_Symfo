@@ -16,8 +16,8 @@ class UserController extends AbstractController
     /**
      * Road for get user with his lists and tasks
      */
-    #[Route('/{id}', name: 'user')]
-    public function userLists($id, UserRepository $userRepository): JsonResponse
+    #[Route('/{id}', name: 'show')]
+    public function show($id, UserRepository $userRepository): JsonResponse
     {
         $user = $userRepository->find($id);
 

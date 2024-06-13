@@ -2,17 +2,18 @@
 
 namespace App\Controller\Api;
 
+use App\Repository\TodolistRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Attribute\Route;
 
+#[Route('/api/list', name: 'api_list')]
 class ListController extends AbstractController
 {
-    #[Route('/list', name: 'app_list')]
-    public function index(): Response
+    #[Route('/{id}', name: 'show')]
+    public function index($id, TodolistRepository $todolistRepository): Response
     {
-        return $this->render('front/list/index.html.twig', [
-            'controller_name' => 'ListController',
-        ]);
+        $list = $todolistRepository->find($id);
+        return $this->json($list, Response::HTTP_OK, [], ["groups" => "list"]);
     }
 }

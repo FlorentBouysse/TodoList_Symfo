@@ -14,18 +14,18 @@ class Todolist
     #[ORM\Id]
     #[ORM\GeneratedValue]
     #[ORM\Column]
-    #[Groups(["user"])]
+    #[Groups(["user", "list"])]
     private ?int $id = null;
 
     #[ORM\Column(length: 255)]
-    #[Groups(["user"])]
+    #[Groups(["user", "list"])]
     private ?string $name = null;
 
     /**
      * @var Collection<int, Task>
      */
     #[ORM\ManyToMany(targetEntity: Task::class, mappedBy: 'TodolistId')]
-    #[Groups(["user"])]
+    #[Groups(["user", "list"])]
     private Collection $tasks;
 
     #[ORM\ManyToOne(inversedBy: 'todolistId')]
