@@ -14,18 +14,18 @@ class Task
     #[ORM\Id]
     #[ORM\GeneratedValue]
     #[ORM\Column]
-    #[Groups(["user", "list"])]
+    #[Groups(["user", "list", "task"])]
     private ?int $id = null;
 
     #[ORM\Column(length: 255)]
-    #[Groups(["user", "list"])]
+    #[Groups(["user", "list", "task"])]
     private ?string $name = null;
 
     /**
      * @var Collection<int, Category>
      */
     #[ORM\ManyToMany(targetEntity: Category::class, inversedBy: 'tasks')]
-    #[Groups(["list"])]
+    #[Groups(["list", "task"])]
     private Collection $categoryId;
 
     /**
