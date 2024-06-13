@@ -12,9 +12,9 @@ La **TodoList**
 - <span style="color:green">&#10003;<del>Créer la base de données en API Rest
 - <span style="color:green">&#10003;<del> Créer les entités
 - <span style="color:green">&#10003;<del>Fixtures
-- <span style="color:orange">CRUD liste
-- CRUD tâche
-- CRUD catégorie
+- <span style="color:green">&#10003;<del>CRUD liste
+- <span style="color:green">&#10003;<del>CRUD tâche
+- <span style="color:green">&#10003;<del>CRUD catégorie
 - Ajout du Token JWT
 
 ## Etape II Authentification
