@@ -5,6 +5,7 @@ namespace App\Controller\Api;
 use App\Entity\Todolist;
 use App\Repository\TodolistRepository;
 use App\Repository\UserRepository;
+use Doctrine\ORM\EntityManagerInterface;
 use Doctrine\Persistence\ManagerRegistry;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
@@ -18,7 +19,7 @@ class ListController extends AbstractController
      * Road for get list with his tasks
      */
     #[Route('/{id}', name: 'show', methods:['GET'])]
-    public function show($id, TodolistRepository $todolistRepository): Response
+    public function show(int $id, TodolistRepository $todolistRepository): Response
     {
         $list = $todolistRepository->find($id);
         return $this->json($list, Response::HTTP_OK, [], ["groups" => "list"]);
@@ -30,7 +31,6 @@ class ListController extends AbstractController
     #[Route('/create', name:'create', methods:['POST'])]
     public function create(ManagerRegistry $managerRegistry,
                             Request $request,
-                            TodolistRepository $todolistRepository,
                             UserRepository $userRepository)
     {
         // $entityManager will be used to persist data in the database
@@ -55,7 +55,7 @@ class ListController extends AbstractController
      * Road for update list
      */
     #[Route('/{id}/update', name:"update", methods:["PUT"])]
-    public function update($id, 
+    public function update(int $id, 
                             ManagerRegistry $managerRegistry,
                             Request $request,
                             TodolistRepository $todolistRepository)
@@ -83,14 +83,13 @@ class ListController extends AbstractController
      * Road for delete list
      */
     #[Route('/{id}/delete', name:"delete", methods:["DELETE"])]
-    public function delete($id, ManagerRegistry $managerRegistry, TodolistRepository $todolistRepository)
+    public function delete(int $id, EntityManagerInterface $entityManager, TodolistRepository $todolistRepository)
     {
-        $todolist = $todolistRepository->find($id);
+        $todolist = $entityManager->getRepository(Todolist::class)->find($id);
         if(!isset($todolist)) {
             return new Response("Cette liste n'existe pas", 400);
         }
-        // $todolistRepository->remove($todolist, true);
-        $entityManager = $managerRegistry->getManager();
+
         $entityManager->remove($todolist);
         $entityManager->flush();
 
