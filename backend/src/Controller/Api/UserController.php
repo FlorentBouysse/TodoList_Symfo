@@ -20,7 +20,9 @@ class UserController extends AbstractController
     public function show($id, UserRepository $userRepository): JsonResponse
     {
         $user = $userRepository->find($id);
-
+        if(!$user) {
+            return new Response("Cette utilisateur n'existe pas", 400);
+        }
         return $this->json($user, Response::HTTP_OK, [], ["groups" => "user"]);
     }
 }

@@ -24,7 +24,7 @@ class TaskController extends AbstractController
     {
         $task = $taskRepository->find($id);
 
-        if(!isset($task)) {
+        if(!$task) {
             return new Response("Cette tâche n'existe pas", 400);
         }
 
@@ -44,6 +44,9 @@ class TaskController extends AbstractController
         $list = $entityManager->getRepository(Todolist::class)->find($listId);
         if(!$list) {
             return new Response("Cette liste n'existe pas !", 400);
+        }
+        if(!$data['name']) {
+            return new Response("Name ne peut pas être null", 400);
         }
 
         $task = new Task();
@@ -68,6 +71,9 @@ class TaskController extends AbstractController
 
         if(!$task) {
             return new Response("Cette tâche n'existe pas", 400);
+        }
+        if(!$data['name']) {
+            return new Response("Name ne peut pas être null", 400);
         }
 
         $task->setName($data["name"]);

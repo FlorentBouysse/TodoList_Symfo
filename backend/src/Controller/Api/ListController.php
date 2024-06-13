@@ -22,6 +22,9 @@ class ListController extends AbstractController
     public function show(int $id, TodolistRepository $todolistRepository): Response
     {
         $list = $todolistRepository->find($id);
+        if(!$list) {
+            return new Response("Cette liste n'existe pas", 400);
+        }
         return $this->json($list, Response::HTTP_OK, [], ["groups" => "list"]);
     }
 
@@ -38,8 +41,11 @@ class ListController extends AbstractController
         $data = json_decode($request->getContent(), true);
 
         $user = $userRepository->find($data["userid"]);
-        if(!isset($user)) {
+        if(!$user) {
             return new Response("Cette utilisateur n'existe pas", 400);
+        }
+        if(!$data['name']) {
+            return new Response("Name ne peut pas être null", 400);
         }
 
         $todolist = new Todolist();
@@ -65,14 +71,15 @@ class ListController extends AbstractController
 
         $todolist = $todolistRepository->find($id);
         // Check if list exist
-        if(!isset($todolist)){
+        if(!$todolist){
             return new Response("Cette liste n'existe pas !", 400);
         }
 
         // Check if data is not null
-        if(isset($data["name"])) {
-            $todolist->setName($data["name"]);
+        if(!$data["name"]) {
+            return new Response("Name ne peut pas être null", 400);
         }
+        $todolist->setName($data["name"]);
 
         $entityManager->persist($todolist);
         $entityManager->flush();
@@ -93,6 +100,6 @@ class ListController extends AbstractController
         $entityManager->remove($todolist);
         $entityManager->flush();
 
-        return new Response("Liste supprimer avec succès", 201);
+        return new Response("Liste supprimer avec succès", 204);
     }
 }
