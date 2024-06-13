@@ -18,6 +18,6 @@ class UserController extends AbstractController
     {
         $user = $userRepository->find($id);
 
-        return $this->json($user, Response::HTTP_OK, []);
+        return $this->json($user, Response::HTTP_OK, [], ["groups" => "user"]);
     }
 }

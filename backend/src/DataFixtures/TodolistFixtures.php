@@ -14,14 +14,14 @@ class TodolistFixtures extends Fixture
     public function load(ObjectManager $manager): void
     {
 
-        $userRepository = $manager->getRepository(User::class);
-        for ($i=0; $i < 10; $i++) { 
-            $todolist = new Todolist();
-            $todolist->setName("liste". $i);
-            $todolist->setUserid($userRepository->find($i));
+        // $userRepository = $manager->getRepository(User::class);
+        // for ($i=0; $i < 10; $i++) { 
+        //     $todolist = new Todolist();
+        //     $todolist->setName("liste". $i);
+        //     $todolist->setUserid($userRepository->find($i));
 
-            $manager->persist($todolist);
-        }
+        //     $manager->persist($todolist);
+        // }
 
         $manager->flush();
     }

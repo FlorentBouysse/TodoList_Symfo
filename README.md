@@ -11,7 +11,7 @@ La **TodoList**
 
 - <span style="color:orange">Créer la base de données en API Rest
 - <span style="color:green">&#10003;<del> Créer les entités
-- <span style="color:orange">Fixtures
+- <span style="color:green">Fixtures
 - Ajout du Token JWT
 
 ## Etape II Authentification

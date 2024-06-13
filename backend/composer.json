@@ -13,6 +13,8 @@
         "symfony/flex": "^2",
         "symfony/framework-bundle": "7.1.*",
         "symfony/runtime": "7.1.*",
+        "symfony/serializer": "7.1.*",
+        "symfony/serializer-pack": "*",
         "symfony/webapp-pack": "*",
         "symfony/yaml": "7.1.*"
     },
