@@ -6,6 +6,7 @@ use App\Repository\TodolistRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Serializer\Annotation\Groups;
 
 #[ORM\Entity(repositoryClass: TodolistRepository::class)]
 class Todolist
@@ -13,15 +14,18 @@ class Todolist
     #[ORM\Id]
     #[ORM\GeneratedValue]
     #[ORM\Column]
+    #[Groups(["user", "list"])]
     private ?int $id = null;
 
     #[ORM\Column(length: 255)]
+    #[Groups(["user", "list"])]
     private ?string $name = null;
 
     /**
      * @var Collection<int, Task>
      */
     #[ORM\ManyToMany(targetEntity: Task::class, mappedBy: 'TodolistId')]
+    #[Groups(["user", "list"])]
     private Collection $tasks;
 
     #[ORM\ManyToOne(inversedBy: 'todolistId')]

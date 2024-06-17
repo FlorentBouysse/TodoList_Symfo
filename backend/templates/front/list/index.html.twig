@@ -1,20 +1,26 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Hello ListController!{% endblock %}
+{% block title %}Todo Liste{% endblock %}
 
 {% block body %}
-<style>
-    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
-    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
-</style>
+    <div>
+        <a href="#">Ajouter une tâche</a>
 
-<div class="example-wrapper">
-    <h1>Hello {{ controller_name }}! ✅</h1>
-
-    This friendly message is coming from:
-    <ul>
-        <li>Your controller at <code>D:/Projects/TodoList_Symfo/backend/src/Controller/ListController.php</code></li>
-        <li>Your template at <code>D:/Projects/TodoList_Symfo/backend/templates/list/index.html.twig</code></li>
-    </ul>
-</div>
+        <div>
+            <table class="table-fixed">
+                <thead>
+                    <tr>
+                    <th>Tâches</th>
+                    <th>Catégorie(s)</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Faire les courses</td>
+                        <td>Course</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
 {% endblock %}

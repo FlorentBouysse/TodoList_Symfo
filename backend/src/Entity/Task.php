@@ -6,6 +6,7 @@ use App\Repository\TaskRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Serializer\Annotation\Groups;
 
 #[ORM\Entity(repositoryClass: TaskRepository::class)]
 class Task
@@ -13,15 +14,18 @@ class Task
     #[ORM\Id]
     #[ORM\GeneratedValue]
     #[ORM\Column]
+    #[Groups(["user", "list", "task"])]
     private ?int $id = null;
 
     #[ORM\Column(length: 255)]
+    #[Groups(["user", "list", "task"])]
     private ?string $name = null;
 
     /**
      * @var Collection<int, Category>
      */
     #[ORM\ManyToMany(targetEntity: Category::class, inversedBy: 'tasks')]
+    #[Groups(["list", "task"])]
     private Collection $categoryId;
 
     /**

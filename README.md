@@ -7,11 +7,19 @@ La **TodoList**
 
 ![MCD projet Todolist](/backend/assets/images/Todolist_symfo.png "MCD projet Todolist")
 
-## Etape I Le crud
+## Etape I L'API
 
-Créer la TodoList, ajouter, supprimer, modifier et voir l'élément <br>
-Ajouter une catégorie
+- <span style="color:green">&#10003;<del>Créer la base de données en API Rest
+- <span style="color:green">&#10003;<del> Créer les entités
+- <span style="color:green">&#10003;<del>Fixtures
+- <span style="color:green">&#10003;<del>CRUD liste
+- <span style="color:green">&#10003;<del>CRUD tâche
+- <span style="color:green">&#10003;<del>CRUD catégorie
+- <span style="color:green">&#10003;<del>Ajout du Token JWT
+- <span style="color:green">&#10003;<del>Créer l'authentification
 
-## Etape II Authentification
+## Etape II Front
 
-Créer l'authentification
+- Page de login
+- Page de listes
+- Page de tâches
