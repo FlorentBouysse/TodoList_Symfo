@@ -15,8 +15,11 @@ La **TodoList**
 - <span style="color:green">&#10003;<del>CRUD liste
 - <span style="color:green">&#10003;<del>CRUD tâche
 - <span style="color:green">&#10003;<del>CRUD catégorie
-- <span style="color:orange">Ajout du Token JWT (login_check ne fonctionne pas pour le moment peut-être qu'il faut que je crée l'authentification ??)
+- <span style="color:green">&#10003;<del>Ajout du Token JWT
+- <span style="color:green">&#10003;<del>Créer l'authentification
 
-## Etape II Authentification
+## Etape II Front
 
-Créer l'authentification
+- Page de login
+- Page de listes
+- Page de tâches
