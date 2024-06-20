@@ -44,3 +44,22 @@ function App() {
     )
 }
 ```
+4. Gestion d'erreur pour les page non trouvé : 
+```
+path: '/',
+    element: (
+      <div>
+        Page de login
+        <nav>
+          <Link to="/">Home</Link>
+          <Link to="/blog">Blog</Link>
+          <Link to="/contact">Contacte</Link>
+        </nav>
+      </div>
+    ),
+    errorElement: <div>Cette page n'existe pas !</div>
+```
+
+## Possible erreurs
+
+- Si les routes sont dans un autre fichier, n'oublie pas d'ajouter "export default nomDeVariableAExporter"

@@ -3,52 +3,10 @@ import Navbar from './components/navbar/Navbar'
 import Login from './components/login/login'
 // import ky from 'ky' 
 import axios from 'axios';
-import {createBrowserRouter, Link, RouterProvider} from "react-router-dom";
+import {RouterProvider} from "react-router-dom";
+import Route from "./routes/Route.jsx"
 
-const router = createBrowserRouter([
-  {
-    path: '/',
-    element: (
-      <div>
-        Page de login
-        <nav>
-          <Link to="/">Home</Link>
-          <Link to="/blog">Blog</Link>
-          <Link to="/contact">Contacte</Link>
-        </nav>
 
-      </div>
-    ),
-  },
-  {
-    path: '/blog',
-    element: (
-      <div>
-        Page de blog
-        <nav>
-          <Link to="/">Home</Link>
-          <Link to="/blog">Blog</Link>
-          <Link to="/contact">Contacte</Link>
-        </nav>
-
-      </div>
-    ),
-  },
-  {
-    path: '/contact',
-    element: (
-      <div>
-        Page de contact
-        <nav>
-          <Link to="/">Home</Link>
-          <Link to="/blog">Blog</Link>
-          <Link to="/contact">Contact</Link>
-        </nav>
-
-      </div>
-    ),
-  },
-]);
 
 function App() {
   const [list, setList] = useState([]);
@@ -89,8 +47,7 @@ function App() {
   return (
     <>
       <div>
-        <h1>Ma bite</h1>
-        <RouterProvider router={router} />
+        <RouterProvider router={Route} />
         {/* <Navbar />
         <Login /> */}
       </div>
