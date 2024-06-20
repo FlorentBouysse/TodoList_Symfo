@@ -1,5 +1,6 @@
 import {createBrowserRouter, Link} from "react-router-dom";
 import NotFoundPage from '../components/errorPage/NotFoundPage';
+import Lists from "../pages/lists/Lists";
 
 
 const router = createBrowserRouter([
@@ -7,42 +8,39 @@ const router = createBrowserRouter([
         path: '/',
         element: (
         <div>
-            Page de login
             <nav>
             <Link to="/">Home</Link>
-            <Link to="/blog">Blog</Link>
-            <Link to="/contact">Contacte</Link>
+            <Link to="/listes">listes</Link>
             </nav>
+            Page de login
         </div>
         ),
         errorElement: <NotFoundPage />
     },
     {
-        path: '/blog',
+        path: '/listes',
         element: (
         <div>
-            Page de blog
             <nav>
             <Link to="/">Home</Link>
-            <Link to="/blog">Blog</Link>
-            <Link to="/contact">Contacte</Link>
+            <Link to="/listes">listes</Link>
             </nav>
+            <Lists />
         </div>
         ),
     },
     {
-        path: '/contact',
+        path: '/listes/:listId',
         element: (
         <div>
-            Page de contact
             <nav>
             <Link to="/">Home</Link>
-            <Link to="/blog">Blog</Link>
-            <Link to="/contact">Contact</Link>
+            <Link to="/listes">listes</Link>
             </nav>
+            Page de tâches
         </div>
         ),
     },
-    ]);
+]);
 
-    export default router;
+export default router;

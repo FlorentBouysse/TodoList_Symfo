@@ -60,6 +60,10 @@ path: '/',
     errorElement: <div>Cette page n'existe pas !</div>
 ```
 
+## Info importante
+
+- Link est en réalité une balise "a" seulement, il est préférable d'utiliser Link de <strong>React router</strong> qui ne refresh pas la page contrairement à un "a"
+
 ## Possible erreurs
 
 - Si les routes sont dans un autre fichier, n'oublie pas d'ajouter "export default nomDeVariableAExporter"

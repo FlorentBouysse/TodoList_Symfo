@@ -1,3 +1,7 @@
+import Button from "../../components/form/Button";
+import Input from "../../components/form/Input";
+
+
 export default function Login() {
     const handleSubmit = (e) => {
         e.preventDefault();
@@ -8,11 +12,9 @@ export default function Login() {
             <h2>Connexion !</h2>
             <div>
                 <form action="#" method="POST" onSubmit={handleSubmit}>
-                    <label htmlFor="email">Email</label>
-                    <input type="email" />
-                    <label htmlFor="password">Mot de passe</label>
-                    <input type="password" />
-                    <button>C'est parti !</button>
+                    <Input type={'email'} name={'email'} label={'Email'}/>
+                    <Input type={'password'} name={'password'} label={'Mot de passe'} />
+                    <Button title={"C'est parti !"} />
                 </form>
             </div>
         </div>

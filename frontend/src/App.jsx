@@ -1,10 +1,9 @@
 import { useEffect, useState } from 'react'
-import Navbar from './components/navbar/Navbar'
-import Login from './components/login/login'
-// import ky from 'ky' 
+// import Navbar from './components/navbar/Navbar'
 import axios from 'axios';
 import {RouterProvider} from "react-router-dom";
-import Route from "./routes/Route.jsx"
+import Route from "./routes/Route.jsx";
+import Login from './pages/login/Login.jsx';
 
 
 
@@ -48,8 +47,8 @@ function App() {
     <>
       <div>
         <RouterProvider router={Route} />
-        {/* <Navbar />
-        <Login /> */}
+        {/* <Navbar /> */}
+        <Login />
       </div>
     </>
   )
