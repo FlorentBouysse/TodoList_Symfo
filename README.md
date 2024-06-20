@@ -7,6 +7,13 @@ La **TodoList**
 
 ![MCD projet Todolist](/backend/assets/images/Todolist_symfo.png "MCD projet Todolist")
 
+## Mises en route
+
+
+En étant dans le dossier correspondant, backend = Symfony et frontend = ReactJS
+- Symfony serve:start
+- npm run dev
+
 ## Etape I L'API
 
 - <span style="color:green">&#10003;<del>Créer la base de données en API Rest
