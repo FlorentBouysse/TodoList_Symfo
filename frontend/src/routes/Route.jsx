@@ -1,6 +1,6 @@
 import {createBrowserRouter, Link} from "react-router-dom";
 import NotFoundPage from '../components/errorPage/NotFoundPage';
-import Lists from "../pages/lists/Lists";
+import Lists from "../components/lists/Lists";
 
 
 const router = createBrowserRouter([

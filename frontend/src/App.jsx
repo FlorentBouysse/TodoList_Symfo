@@ -3,7 +3,8 @@ import { useEffect, useState } from 'react'
 import axios from 'axios';
 import {RouterProvider} from "react-router-dom";
 import Route from "./routes/Route.jsx";
-import Login from './pages/login/Login.jsx';
+import Cours from './components/cours/Cours.jsx';
+// import Login from './components/login/Login.jsx';
 
 
 
@@ -47,8 +48,12 @@ function App() {
     <>
       <div>
         <RouterProvider router={Route} />
+        <Cours />
+        
+        
+        
         {/* <Navbar /> */}
-        <Login />
+        {/* <Login /> */}
       </div>
     </>
   )
