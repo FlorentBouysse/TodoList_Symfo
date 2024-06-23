@@ -1,5 +1,6 @@
 import Article from "./components/Article";
 import Card from "./components/Card";
+import ApiCall from "./components/apiCall/ApiCall";
 import GlobalEvent from "./components/globalEvent/GlobalEvent";
 
 export default function Cours() {
@@ -12,7 +13,8 @@ export default function Cours() {
             <br/>
             <br/>
             
-            <GlobalEvent />
+            {/* <GlobalEvent /> */}
+            <ApiCall />
         </div>
     )
 }
