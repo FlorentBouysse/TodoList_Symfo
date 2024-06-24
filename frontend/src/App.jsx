@@ -4,7 +4,7 @@ import axios from 'axios';
 import {RouterProvider} from "react-router-dom";
 import Route from "./routes/Route.jsx";
 import Cours from './components/cours/Cours.jsx';
-// import Login from './components/login/Login.jsx';
+import Login from './components/login/Login';
 
 
 
@@ -41,19 +41,26 @@ function App() {
             // setIsLoading(false);
         }
     }
-
+   
     // fetchProducts();
 }, []);
   return (
     <>
       <div>
         <RouterProvider router={Route} />
-        <Cours />
         
         
         
         {/* <Navbar /> */}
-        {/* <Login /> */}
+        <Login />
+        <div>
+          <br/><br/>
+          <br/><br/>
+          <br/><br/>
+          <br/><br/>
+          <br/><br/>
+          <Cours />
+        </div>
       </div>
     </>
   )
