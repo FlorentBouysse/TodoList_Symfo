@@ -6,6 +6,7 @@ import Login from "../components/login/Login";
 
 const router = createBrowserRouter([
     {
+        name: "Connexion",
         path: '/',
         element: (
         <div>

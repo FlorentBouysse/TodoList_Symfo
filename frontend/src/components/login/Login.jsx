@@ -41,8 +41,8 @@ export default function Login() {
             console.log(loginResponse.data.token);
             console.log(logToken);
             if(logToken) {
-                localStorage.setItem("token", token);
-                setToken(loginResponse.data.token);
+                localStorage.setItem("token", logToken);
+                setToken(logToken);
 
                 navigate("/listes");
                 console.log("jesuisla");

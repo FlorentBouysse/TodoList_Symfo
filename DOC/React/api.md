@@ -23,7 +23,7 @@ useEffect(() => {
         async function fetchUsers() {
             try {
                 const config = {
-                headers: { Authorization: `Bearer` ${token} }
+                headers: { Authorization: `Bearer${token}` }
             };
                 const userResponse = await axios.get('https://jsonplaceholder.typicode.com/users', config);
 
