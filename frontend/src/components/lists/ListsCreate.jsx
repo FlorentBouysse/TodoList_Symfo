@@ -2,11 +2,13 @@ import React, { useState } from 'react'
 import Input from '../form/Input';
 import Button from '../form/Button';
 import axios from 'axios';
+import { useNavigate } from 'react-router-dom';
 
 export default function ListsCreate() {
 //##########################################
 // State
     const [listName, setListName] = useState('');
+    const navigate = useNavigate();
 
 //##########################################
 // Behavior
@@ -25,6 +27,7 @@ export default function ListsCreate() {
                 userid: localStorage.userId
             }, config);
 
+            navigate('/listes');
             console.log(listResponse);
         } catch (error) {
             console.log('error: ', error);

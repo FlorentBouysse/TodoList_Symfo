@@ -11,14 +11,8 @@ export default function Lists() {
         error: false,
         data: undefined
     });
-    const [listData, setListData] = useState({
-        loading: true,
-        error: false,
-        data: undefined
-    });
 
     let content;
-    let listsData;
 
 // #####################################
 // Behavior
@@ -53,9 +47,8 @@ export default function Lists() {
     console.log(userData.data?.length > 0);
     if(userData.loading) content = <div>Loading...</div>
     else if(userData.error) content = <div>Une erreur est survenue...</div>
-    else if(userData.data) {
-        console.log('lalal');
-        console.log(userData.data.nickname);
+    else if(userData.data?.todolistId.length > 0) {
+        // console.log('lalal');
         content = <div>
                 <h2>Bonjour {userData.data.nickname}</h2>
                 <ul>{userData.data ? userData.data.todolistId.map(list => (
@@ -67,12 +60,7 @@ export default function Lists() {
                 )) : "Vous n'avez aucune liste" }</ul>
             </div>
     }
-    else if(userData.data?.length === 0) {
-        content = <p>Votre requête ne correspond à aucune données !</p>
-    }
-    else {
-        console.log('je suis dans le else');
-    }
+    else if(userData.data?.length === 0) content = <p>Votre requête ne correspond à aucune données !</p>
 
 // #####################################
 // Display

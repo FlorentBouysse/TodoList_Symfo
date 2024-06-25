@@ -3,6 +3,8 @@ import NotFoundPage from '../components/errorPage/NotFoundPage';
 import Lists from "../components/lists/Lists";
 import Login from "../components/login/Login";
 import ListsCreate from "../components/lists/ListsCreate";
+import Tasks from "../components/tasks/Tasks";
+import TasksCreate from "../components/tasks/TasksCreate";
 
 
 const router = createBrowserRouter([
@@ -11,24 +13,34 @@ const router = createBrowserRouter([
         path: '/',
         element: (
         <div>
-            <nav>
-            <Link to="/">Home</Link>
-            <Link to="/listes">listes</Link>
-            </nav>
             <Login />
         </div>
         ),
         errorElement: <NotFoundPage />
     },
+// #########################################
+// List
+// #########################################
     {
         path: '/listes',
         element: (
         <div>
             <nav>
             <Link to="/">Home</Link>
-            <Link to="/listes">listes</Link>
+            <Link to="/listes">Mes listes</Link>
             </nav>
             <Lists />
+        </div>
+        ),
+    },
+    {
+        path: '/listes/creer',
+        element: (
+            <div>
+            <nav>
+            <Link to="/listes">Mes listes</Link>
+            </nav>
+            <ListsCreate />
         </div>
         ),
     },
@@ -37,24 +49,48 @@ const router = createBrowserRouter([
         element: (
         <div>
             <nav>
-            <Link to="/">Home</Link>
-            <Link to="/listes">listes</Link>
+            <Link to="/listes">Mes listes</Link>
             </nav>
-            Page de tâches
+            <Tasks />
         </div>
         ),
     },
+// #########################################
+// Task
+// #########################################
     {
-        path: '/listes/creer',
+        path: '/listes/:listId/nouvelle-tache',
         element: (
         <div>
             <nav>
             <Link to="/listes">Mes listes</Link>
             </nav>
-            <ListsCreate />
+            <TasksCreate />
         </div>
         ),
     },
+    // {
+    //     path: '/listes/:listId/nouvelle-tache',
+    //     element: (
+    //     <div>
+    //         <nav>
+    //         <Link to="/listes">listes</Link>
+    //         </nav>
+    //         <TasksCreate />
+    //     </div>
+    //     ),
+    // },
+    // {
+    //     path: '/listes/:listId/nouvelle-tache',
+    //     element: (
+    //     <div>
+    //         <nav>
+    //         <Link to="/listes">listes</Link>
+    //         </nav>
+    //         <TasksCreate />
+    //     </div>
+    //     ),
+    // },
 ]);
 
 export default router;
