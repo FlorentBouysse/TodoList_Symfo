@@ -42,6 +42,7 @@ export default function Login() {
             console.log(logToken);
             if(logToken) {
                 localStorage.setItem("token", logToken);
+                localStorage.setItem("email", email);
                 setToken(logToken);
 
                 navigate("/listes");

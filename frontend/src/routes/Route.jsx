@@ -2,6 +2,7 @@ import {createBrowserRouter, Link} from "react-router-dom";
 import NotFoundPage from '../components/errorPage/NotFoundPage';
 import Lists from "../components/lists/Lists";
 import Login from "../components/login/Login";
+import ListsCreate from "../components/lists/ListsCreate";
 
 
 const router = createBrowserRouter([
@@ -40,6 +41,17 @@ const router = createBrowserRouter([
             <Link to="/listes">listes</Link>
             </nav>
             Page de tâches
+        </div>
+        ),
+    },
+    {
+        path: '/listes/creer',
+        element: (
+        <div>
+            <nav>
+            <Link to="/listes">Mes listes</Link>
+            </nav>
+            <ListsCreate />
         </div>
         ),
     },

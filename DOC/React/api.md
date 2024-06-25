@@ -49,3 +49,23 @@ On utilise un hook useEffect pour fait ça.
 - 3. On assigne (update) via le setter du state les données récupéré de l'API, le loading et error passe à "false".
 4. Le catch est ici pour le cas ou le try ne fonctionne pas. On modifie également le state via le setter pour que loading passe à "false" et error à "true" 
 5. Finally est ici pour faire une action peu importe que le try est fonctionné ou non. On peut mettre un console log pour le debug pour voir si le code passe bien dedans par exemple.
+
+```js
+if(APIState.loading) content = <div>Loading...</div>
+    else if(APIState.error) content = <p>Une erreur est survenue...</p>
+    else if(APIState.data?.length > 0) {
+        // Si on a notre liste et qu'elle est supérieur à zéro
+        content = <ul>
+            { APIState.data.map(item => (
+                <li key={ item.id }>
+                    <span>{ item.name }</span>
+                    <span>{ item.email }</span>
+                    <span>{ item.phone }</span>
+                </li>
+            )) }
+        </ul>
+    } else if(APIState.data?.length === 0) {
+        // Si on a les données et qu'elles sont vide
+        content = <p>Votre requête ne correspond à aucune données !</p>
+    }
+```
