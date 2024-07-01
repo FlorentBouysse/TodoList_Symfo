@@ -1,11 +1,11 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react'
-import { Link, useParams } from 'react-router-dom';
+import { Link, redirect, useParams } from 'react-router-dom';
 
 export default function Tasks() {
 //###################################
 //State
-    const [tasks, setTasks] = useState({
+    const [tasksList, setTasksList] = useState({
         loading: true,
         error: false,
         data: undefined
@@ -18,8 +18,42 @@ export default function Tasks() {
 
 //###################################
 //Behavior
+    async function handleDelete(event) {
+        if(event) event.preventDefault();
+        setTasksList({...tasksList, loading: true});
+        // console.log(event.target.id);
+        const taskId = event.target.id;
+
+        try {
+            const config = {
+                headers: {Authorization: `Bearer ${localStorage.token}`}
+            };
+
+            const taskDeleteresponse = await axios.delete(`http://127.0.0.1:8000/api/task/${taskId}/delete`, config);
+            console.log(taskDeleteresponse);
+            const taskListCopy = tasksList.data; 
+
+            const newDataTaskList = tasksList.data.tasks.filter((task) => {
+                console.log(task.id);
+                return task.id != taskId
+            })
+    
+            taskListCopy["tasks"] = newDataTaskList;
+            // console.log(taskListCopy);
+
+
+            // mettre dans le setter en pensant qu'il y a loading error et data
+            setTasksList({loading: false, error: false, data: taskListCopy});
+            // console.log(tasksList);
+            
+        } catch (error) {
+            setTasksList({...tasksList, error:true});
+            console.log(error);
+        }
+    }
+
     useEffect(() => {
-        setTasks({...tasks, loading: true});
+        setTasksList({...tasksList, loading: true});
         async function fetchTasks() {
             try {
                 // configuration du header de la requete
@@ -30,32 +64,33 @@ export default function Tasks() {
                 const taskResponse = await axios.get(`http://127.0.0.1:8000/api/list/${listId}`, config);
 
                 // console.log(taskResponse.data.tasks);
-                setTasks({loading: false, error: false, data: taskResponse.data})
+                setTasksList({loading: false, error: false, data: taskResponse.data})
             } catch (error) {
                 console.log(error);
-                setTasks({...tasks, loading: false, error: true});
+                setTasksList({...tasksList, loading: false, error: true});
             }
         }
         fetchTasks();
 
     }, [])
 
-    if(tasks.loading) content = <div>Loading...</div>
-    else if(tasks.error) content = <div>Une erreur est survenue...</div>
-    else if(tasks.data?.tasks.length > 0) {
-        console.log('lalal');
+    if(tasksList.loading) content = <div>Loading...</div>
+    else if(tasksList.error) content = <div>Une erreur est survenue...</div>
+    else if(tasksList.data?.tasks.length > 0) {
         content = <div>
-            <h2>Liste: { tasks.data.name }</h2>
+            <h2>Liste: { tasksList.data.name }</h2>
             <ul>
-                {tasks.data ? tasks.data.tasks.map(task => (
+                {tasksList.data ? tasksList.data.tasks.map(task => (
                     <li key={task.id}>
                         {task.name}
+                        
+                            <button onClick={handleDelete} value={task.id}><i id={task.id} className="fa-solid fa-trash"></i></button>
                     </li>
                 )) : "Vous n'avez aucune tâche dans cette liste !"}
             </ul>
         </div>
     }
-    else if(tasks.data?.tasks.length === 0) content = <p>Votre requête ne correspond à aucune données !</p>
+    else if(tasksList.data?.tasks.length === 0) content = <p>Votre requête ne correspond à aucune données !</p>
 
 //###################################
 //Display

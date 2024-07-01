@@ -38,16 +38,14 @@ export default function Login() {
 
             const logToken = loginResponse.data.token;
             
-            console.log(loginResponse.data.token);
-            console.log(logToken);
+            // console.log(loginResponse.data.token);
+            // console.log(logToken);
             if(logToken) {
                 localStorage.setItem("token", logToken);
                 localStorage.setItem("email", email);
                 setToken(logToken);
 
                 navigate("/listes");
-                console.log("jesuisla");
-
             }
             // console.log(loginResponse.data.token);
         } catch (error) {
