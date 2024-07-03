@@ -6,6 +6,7 @@ import ListsCreate from "../components/lists/ListsCreate";
 import Tasks from "../components/tasks/Tasks";
 import TasksCreate from "../components/tasks/TasksCreate";
 import ListsUpdate from "../components/lists/ListsUpdate";
+import TasksUpdate from "../components/tasks/TasksUpdate";
 
 
 const router = createBrowserRouter([
@@ -81,17 +82,17 @@ const router = createBrowserRouter([
         </div>
         ),
     },
-    // {
-    //     path: '/listes/:listId/nouvelle-tache',
-    //     element: (
-    //     <div>
-    //         <nav>
-    //         <Link to="/listes">listes</Link>
-    //         </nav>
-    //         <TasksCreate />
-    //     </div>
-    //     ),
-    // },
+    {
+        path: '/listes/:listId/modifier/tache/:taskId',
+        element: (
+        <div>
+            <nav>
+            <Link to="/listes">listes</Link>
+            </nav>
+            <TasksUpdate />
+        </div>
+        ),
+    },
     // {
     //     path: '/listes/:listId/nouvelle-tache',
     //     element: (

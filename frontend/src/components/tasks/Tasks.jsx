@@ -1,6 +1,6 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react'
-import { Link, redirect, useParams } from 'react-router-dom';
+import { Link, Navigate, redirect, useNavigate, useParams } from 'react-router-dom';
 
 export default function Tasks() {
 //###################################
@@ -13,6 +13,7 @@ export default function Tasks() {
 
     // Get id in URL
     const {listId} = useParams();
+    const navigate = useNavigate();
     let content;
     // console.log(listId);
 
@@ -74,6 +75,14 @@ export default function Tasks() {
 
     }, [])
 
+    function handleUpdate(id, name) {
+        console.log(name);
+        console.log(id);
+
+        localStorage.setItem("updateTask", name);
+        navigate(`/listes/${listId}/modifier/tache/${id}`);
+    }
+
     if(tasksList.loading) content = <div>Loading...</div>
     else if(tasksList.error) content = <div>Une erreur est survenue...</div>
     else if(tasksList.data?.tasks.length > 0) {
@@ -83,8 +92,8 @@ export default function Tasks() {
                 {tasksList.data ? tasksList.data.tasks.map(task => (
                     <li key={task.id}>
                         {task.name}
-                        
-                            <button onClick={handleDelete} value={task.id}><i id={task.id} className="fa-solid fa-trash"></i></button>
+                            <button onClick={handleDelete} ><i id={task.id} className="fa-solid fa-trash"></i></button>
+                            <button onClick={() => handleUpdate(task.id, task.name)} ><i className="fa-solid fa-pen"></i></button>
                     </li>
                 )) : "Vous n'avez aucune tâche dans cette liste !"}
             </ul>
