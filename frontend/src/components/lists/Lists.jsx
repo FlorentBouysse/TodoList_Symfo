@@ -1,6 +1,6 @@
 import axios from "axios";
 import { useEffect, useLayoutEffect, useState } from "react"
-import { Link, useLocation } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 
 
 export default function Lists() {
@@ -12,6 +12,7 @@ export default function Lists() {
         data: undefined
     });
 
+    const navigate = useNavigate();
     let content;
 
 // #####################################
@@ -77,9 +78,13 @@ export default function Lists() {
         fetchLists()
     }, [])
 
+    function saveNameList(name, id){
+        localStorage.setItem("updateList", name);
+        navigate(`/listes/modifier/${id}`);
+    }
     
-    console.log(userData.data);
-    console.log(userData.data?.length > 0);
+    // console.log(userData.data);
+    // console.log(userData.data?.length > 0);
     if(userData.loading) content = <div>Loading...</div>
     else if(userData.error) content = <div>Une erreur est survenue...</div>
     else if(userData.data?.todolistId.length > 0) {
@@ -91,7 +96,10 @@ export default function Lists() {
                         <Link to={`../listes/${list.id}`}>
                             { list.name }
                         </Link>
-                        <button onClick={handleDelete} value={list.id}><i id={list.id} className="fa-solid fa-trash"></i></button>
+                        <button onClick={handleDelete} ><i id={list.id} className="fa-solid fa-trash"></i></button>
+                        <button onClick={() => saveNameList(list.name, list.id)}>
+                            <i className="fa-solid fa-pen"></i>
+                        </button>
                     </li>
                 )) : "Vous n'avez aucune liste" }</ul>
             </div>

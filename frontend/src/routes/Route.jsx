@@ -5,6 +5,7 @@ import Login from "../components/login/Login";
 import ListsCreate from "../components/lists/ListsCreate";
 import Tasks from "../components/tasks/Tasks";
 import TasksCreate from "../components/tasks/TasksCreate";
+import ListsUpdate from "../components/lists/ListsUpdate";
 
 
 const router = createBrowserRouter([
@@ -47,11 +48,22 @@ const router = createBrowserRouter([
     {
         path: '/listes/:listId',
         element: (
-        <div>
+            <div>
             <nav>
             <Link to="/listes">Mes listes</Link>
             </nav>
             <Tasks />
+        </div>
+        ),
+    },
+    {
+        path: '/listes/modifier/:id',
+        element: (
+            <div>
+            <nav>
+            <Link to="/listes">Mes listes</Link>
+            </nav>
+            <ListsUpdate />
         </div>
         ),
     },
