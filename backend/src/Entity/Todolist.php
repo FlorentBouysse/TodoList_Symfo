@@ -21,10 +21,15 @@ class Todolist
     #[Groups(["user", "list"])]
     private ?string $name = null;
 
+
+    // Ici j'ai fais un erreur dans la relation entre list et task
+    // j'ai bien mis l'option pour que lorsqu'une liste est supprimé
+    // les tâches doivent l'être aussi mais il fallait une relation manyToOne
+    // Or j'ai mis une many to many. Donc orphanRemoval=true ne sert à rien ici
     /**
      * @var Collection<int, Task>
      */
-    #[ORM\ManyToMany(targetEntity: Task::class, mappedBy: 'TodolistId')]
+    #[ORM\ManyToMany(targetEntity: Task::class, mappedBy: 'TodolistId', orphanRemoval:true)]
     #[Groups(["user", "list"])]
     private Collection $tasks;
 

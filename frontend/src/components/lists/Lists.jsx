@@ -16,6 +16,41 @@ export default function Lists() {
 
 // #####################################
 // Behavior
+    // console.log(userData.data.todolistId);
+    async function handleDelete(event) {
+        if(event) event.preventDefault();
+        setUserData({...userData, loading: true});
+        console.log(event.target.id);
+        const listId = event.target.id;
+
+        try {
+            const config = { 
+                headers: {Authorization: `Bearer ${localStorage.token}`}
+            };
+
+            const taskDeleteresponse = await axios.delete(`http://127.0.0.1:8000/api/list/${listId}/delete`, config);
+            console.log(taskDeleteresponse);
+            const userDataCopy = userData.data; 
+
+            const newDataUserData = userData.data.todolistId.filter((list) => {
+                console.log(list.id);
+                return list.id != listId
+            })
+
+            userDataCopy["todolistId"] = newDataUserData;
+            // console.log(userDataCopy);
+
+
+            // mettre dans le setter en pensant qu'il y a loading error et data
+            setUserData({loading: false, error: false, data: userDataCopy});
+            // console.log(tasksList);
+            
+        } catch (error) {
+            setUserData({...userData, error:true});
+            console.log(error);
+        }
+    }
+
     // console.log(localStorage.token);
     useEffect(() => {
         setUserData({...userData, loading: true});
@@ -56,6 +91,7 @@ export default function Lists() {
                         <Link to={`../listes/${list.id}`}>
                             { list.name }
                         </Link>
+                        <button onClick={handleDelete} value={list.id}><i id={list.id} className="fa-solid fa-trash"></i></button>
                     </li>
                 )) : "Vous n'avez aucune liste" }</ul>
             </div>
