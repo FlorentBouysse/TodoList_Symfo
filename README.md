@@ -3,9 +3,20 @@
 Exercice pour moi-même <br>
 La **TodoList**
 
+Techno utilisé : 
+- Symfony
+- ReactJs
+
 ### MCD
 
 ![MCD projet Todolist](/backend/assets/images/Todolist_symfo.png "MCD projet Todolist")
+
+## Mises en route
+
+
+En étant dans le dossier correspondant, backend = Symfony et frontend = ReactJS
+- Symfony serve:start
+- npm run dev
 
 ## Etape I L'API
 
@@ -23,3 +34,7 @@ La **TodoList**
 - Page de login
 - Page de listes
 - Page de tâches
+
+## Erreur rencontré
+
+- Relation Many to many entre todolist et task. J'ai voulu faire en sorte que lorsqu'on supprime un todolist, les tâches soient supprimé aussi, ce qui est normal mais le fait d'avoir mit une relation many to many m'a bloqué. J'ai bien ajouté l'option "orphanRemoval=true" mais il fallait mettre la relation en many to one pour que cela fonctionnes.

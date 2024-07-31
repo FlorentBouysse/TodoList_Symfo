@@ -16,10 +16,10 @@ class UserController extends AbstractController
     /**
      * Road for get user with his lists and tasks
      */
-    #[Route('/{id}', name: 'show')]
-    public function show($id, UserRepository $userRepository): JsonResponse
+    #[Route('/{email}', name: 'byEmail')]
+    public function byEmail($email, UserRepository $userRepository): JsonResponse
     {
-        $user = $userRepository->find($id);
+        $user = $userRepository->findOneByEmail($email);
         if(!$user) {
             return new Response("Cette utilisateur n'existe pas", 400);
         }

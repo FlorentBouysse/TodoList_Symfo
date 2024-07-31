@@ -1,13 +1,21 @@
-import { useState } from 'react'
-import Navbar from './components/navbar/Navbar'
+import {RouterProvider} from "react-router-dom";
+import Route from "./routes/Route.jsx";
+import Cours from './components/cours/Cours.jsx';
 
 function App() {
-  const [count, setCount] = useState(0)
   return (
     <>
       <div>
-        <Navbar />
-        <button>Ajouter une tâche</button>
+        <RouterProvider router={Route} />
+        
+        {/* <div>
+          <br/><br/>
+          <br/><br/>
+          <br/><br/>
+          <br/><br/>
+          <br/><br/>
+          <Cours />
+        </div> */}
       </div>
     </>
   )
