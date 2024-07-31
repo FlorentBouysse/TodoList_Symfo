@@ -3,6 +3,10 @@
 Exercice pour moi-même <br>
 La **TodoList**
 
+Techno utilisé : 
+- Symfony
+- ReactJs
+
 ### MCD
 
 ![MCD projet Todolist](/backend/assets/images/Todolist_symfo.png "MCD projet Todolist")
